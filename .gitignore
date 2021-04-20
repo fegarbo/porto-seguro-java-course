@@ -1,0 +1,11 @@
+/target/
+/Servers/
+
+/.classpath
+/.springBeans
+/.project
+/.settings/
+/.gradle/
+/build/
+/.metadata/
+/*.war
