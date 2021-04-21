@@ -16,7 +16,7 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("login.jsp");
+		request.getRequestDispatcher("/WEB-INF/admin/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,11 +26,8 @@ public class LoginServlet extends HttpServlet {
 			String password = request.getParameter("txtSenha");
 			
 			if (usuario.equals("admin") && password.equals("admin")) {
-				//validado
-				//response.sendRedirect("resultado.jsp");
 				request.setAttribute("mensagem", "Bem vindo, usuário autenticado.");
 			}else {				
-				//invalido
 				request.setAttribute("mensagem", "Erro: Usuário ou senha inválidos.");
 			}
 			
@@ -38,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			throw e;
 		}
 		finally {
-			request.getRequestDispatcher("resultado.jsp").forward(request, response);;
+			request.getRequestDispatcher("/WEB-INF/admin/resultado.jsp").forward(request, response);;
 		}
 	}
 
