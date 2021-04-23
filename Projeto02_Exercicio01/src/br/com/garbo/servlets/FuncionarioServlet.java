@@ -1,4 +1,4 @@
-package br.com.portoseguro.servlets;
+package br.com.garbo.servlets;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.portoseguro.classes.Funcionario;
+import br.com.garbo.classes.Funcionario;
 
 @WebServlet("/employee")
 public class FuncionarioServlet extends HttpServlet {

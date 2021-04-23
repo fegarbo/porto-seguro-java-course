@@ -1,4 +1,4 @@
-package br.com.portoseguro.classes;
+package br.com.garbo.classes;
 
 import java.util.Date;
 

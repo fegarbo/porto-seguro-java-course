@@ -1,4 +1,4 @@
-package br.com.portoseguro.servlets;
+package br.com.garbo.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
