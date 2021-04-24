@@ -1,11 +1,7 @@
-/target/
 /Servers/
-
-/.classpath
-/.springBeans
-/.project
-/.settings/
-/.gradle/
-/build/
 /.metadata/
-/*.war
+*/target/
+*/.classpath
+*/.project
+*/.settings/
+*/build/
