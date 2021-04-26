@@ -45,12 +45,12 @@
 			out.print("<h1>Dados do funcionário - JSP</h1>");
 	 %>	 
 	 		<ul>
-	 			<li><strong>Nome: </strong><%= nome %></li>
-	 			<li><strong>Data Nasc: </strong><%= dataNasc %></li>
-	 			<li><strong>Cargo: </strong><%= cargo %></li>
-	 			<li><strong>Salário: </strong><%= salario %></li>
-	 			<li><strong>IRPF: </strong><%= f.getIrpf() %></li>
-	 			<li><strong>Salário Líquido: </strong><%= f.getSalarioLiquido() %></li>	 		
+	 			<li><strong>Nome:</strong><%= nome %></li>
+	 			<li><strong>Data Nasc:</strong><%= dataNasc %></li>
+	 			<li><strong>Cargo:</strong><%= cargo %></li>
+	 			<li><strong>Salário:</strong><%= salario %></li>
+	 			<li><strong>IRPF:</strong><%= f.getIrpf() %></li>
+	 			<li><strong>Salário Líquido:</strong><%= f.getSalarioLiquido() %></li>	 		
 	 		</ul>	 
 	<% } %>
 </body>
