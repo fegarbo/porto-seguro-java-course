@@ -1,6 +1,5 @@
 package br.com.garbo.jdbc;
 
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -55,9 +54,23 @@ public class UsuarioDao extends Dao<Usuario> {
 	}
 
 	@Override
-	public Usuario buscar(Object chave) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario buscar(Object chave) throws Exception {		
+		
+		Usuario usuario = null;		
+		try {			
+			if (!(chave instanceof String)) {
+				throw new Exception("Tipo de parâmetro deve ser uma String");
+			}else {
+				abrirConexao();
+			}						
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			fecharConexao();
+		}
+		
+		return usuario;
 	}
 	
 	

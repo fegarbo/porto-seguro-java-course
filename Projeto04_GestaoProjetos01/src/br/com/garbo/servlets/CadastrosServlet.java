@@ -1,6 +1,8 @@
 package br.com.garbo.servlets;
 
 import java.io.IOException;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.garbo.jdbc.UsuarioDao;
+import br.com.garbo.enumerations.Niveis;
+import br.com.garbo.models.Cliente;
 import br.com.garbo.models.Usuario;
+import br.com.garbo.repository.Repositorio;
 import br.com.garbo.utilities.Utils;
 
 /**
@@ -35,6 +39,20 @@ public class CadastrosServlet extends HttpServlet {
 					break;
 				case "c":
 					pagina += "cadClientes.jsp";
+					
+					Collection<Usuario> listaUsuarios =
+							Repositorio.getUsuarioDao()
+							.listar()
+							.stream()
+							.filter(u -> u.getNivel().equals(Niveis.CLIENTE))
+							.collect(Collectors.toList());
+					
+					if (listaUsuarios.size() == 0) {
+						throw new Exception("Não existem usuários com o nível esperado.");
+					}
+					
+					request.setAttribute("usuarios", listaUsuarios);
+					
 					break;
 				case "p":
 					pagina += "cadPrestadores.jsp";
@@ -64,6 +82,9 @@ public class CadastrosServlet extends HttpServlet {
 			case "u":
 				incluirUsuario(request, response);
 				break;
+			case "c":
+				incluirCliente(request, response);
+				break;				
 
 			default:
 				break;
@@ -86,11 +107,29 @@ public class CadastrosServlet extends HttpServlet {
 		usuario.setSenha(senha);
 		usuario.setNivel(Utils.buscarNivel(nivel));
 		
-		UsuarioDao dao = new UsuarioDao();
-		dao.incluir(usuario);
+		Repositorio.getUsuarioDao().incluir(usuario);
 		
 		request.setAttribute("resultado", "Usuário incluído com sucesso.");
 		request.getRequestDispatcher("/WEB-INF/admin/cadUsuarios.jsp").forward(request, response);		
 	}
+	
+	private void incluirCliente(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String nome = request.getParameter("txtNome");
+		String email = request.getParameter("txtEmail");
+		String telefone = request.getParameter("txtTelefone");
+		String usuario = request.getParameter("cmbUsuario");
+		
+		Cliente cliente = new Cliente();
+		cliente.setNome(nome);
+		cliente.setEmail(email);
+		cliente.setTelefone(telefone);
+		//cliente.setUsuario(null);
+		
+		Repositorio.getClienteDao().incluir(cliente);
+		
+		request.setAttribute("resultado", "Cliente incluído com sucesso.");
+		request.getRequestDispatcher("/WEB-INF/admin/cadClientes.jsp").forward(request, response);		
+	}	
 
 }

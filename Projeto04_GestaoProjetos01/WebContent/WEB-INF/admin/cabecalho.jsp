@@ -12,6 +12,7 @@
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="cadastro?opcao=u">Cadastros Usuários</a></li>
       <li class="nav-item"><a class="nav-link" href="cadastro?opcao=c">Cadastro Clientes</a></li>
+      <li class="nav-item"><a class="nav-link" href="cadastro?opcao=p">Cadastro Prestadores</a></li>
     </ul>
   </div>
 </nav>
