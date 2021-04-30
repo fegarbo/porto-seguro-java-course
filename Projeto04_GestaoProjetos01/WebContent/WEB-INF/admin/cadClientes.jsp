@@ -32,7 +32,7 @@
 						<label>Usuário:</label>
 						<select class="form-control" name="cmbUsuario">
 							<c:forEach var="usuario" items="${usuarios}">
-								<option value="">${usuario.nome} (${usuario.nivel})</option>								
+								<option value="${usuario.nome}">${usuario.nome} (${usuario.nivel})</option>								
 							</c:forEach>
 						</select>
 					</div>

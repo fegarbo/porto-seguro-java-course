@@ -124,12 +124,12 @@ public class CadastrosServlet extends HttpServlet {
 		cliente.setNome(nome);
 		cliente.setEmail(email);
 		cliente.setTelefone(telefone);
-		//cliente.setUsuario(null);
+		cliente.setUsuario(Repositorio.getUsuarioDao().buscar(usuario));
 		
 		Repositorio.getClienteDao().incluir(cliente);
 		
-		request.setAttribute("resultado", "Cliente incluído com sucesso.");
-		request.getRequestDispatcher("/WEB-INF/admin/cadClientes.jsp").forward(request, response);		
+		request.setAttribute("listaClientes", Repositorio.getClienteDao().listar());
+		request.getRequestDispatcher("/WEB-INF/admin/listaClientes.jsp").forward(request, response);		
 	}	
 
 }

@@ -17,21 +17,16 @@ public final class Utils {
 		}
 	}
 	
-	public static Niveis buscarNivel(String nivel) {
-		Niveis n = null;
-		
+	public static Niveis buscarNivel(String nivel) {		
 		switch (nivel) {
 		case "ADM":
-			n = Niveis.ADM;
-			break;
+			return Niveis.ADM;
 		case "CLIENTE":
-			n = Niveis.CLIENTE;
-			break;			
+			return Niveis.CLIENTE;
 		case "PREST":
-			n = Niveis.PREST;
-			break;					
-		}
-		
-		return n;
+			return Niveis.PREST;
+		default:
+			return null;			
+		}		
 	}
 }

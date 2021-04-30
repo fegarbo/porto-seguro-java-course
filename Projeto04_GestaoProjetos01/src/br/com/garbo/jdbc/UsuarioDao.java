@@ -60,9 +60,20 @@ public class UsuarioDao extends Dao<Usuario> {
 		try {			
 			if (!(chave instanceof String)) {
 				throw new Exception("Tipo de parâmetro deve ser uma String");
-			}else {
-				abrirConexao();
-			}						
+			}
+			
+			abrirConexao();
+			String sql = "SELECT * FROM USUARIOS WHERE NOME = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setString(1, (String)chave);
+			rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				usuario = new Usuario();
+				usuario.setNome(rs.getString("NOME"));
+				usuario.setSenha(rs.getString("SENHA"));
+				usuario.setNivel(Utils.buscarNivel(rs.getString("NIVEL")));
+			}
 			
 		} catch (Exception e) {
 			throw e;
