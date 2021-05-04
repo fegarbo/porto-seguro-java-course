@@ -11,7 +11,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="cadastro?opcao=u">Cadastros Usuários</a></li>
-      <li class="nav-item"><a class="nav-link" href="cadastro?opcao=c">Cadastro Clientes</a></li>
+<!--       <li class="nav-item"><a class="nav-link" href="cadastro?opcao=c">Cadastro Clientes</a></li> -->
+      <li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    	Clientes
+	    </a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<a class="dropdown-item" href="cadastro?opcao=c">Cadastro</a>
+			<a class="dropdown-item" href="listaClientes">Lista</a>
+	     </div>
+      </li>
       <li class="nav-item"><a class="nav-link" href="cadastro?opcao=p">Cadastro Prestadores</a></li>
     </ul>
   </div>

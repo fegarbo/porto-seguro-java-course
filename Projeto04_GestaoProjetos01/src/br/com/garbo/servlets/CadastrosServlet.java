@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.garbo.enumerations.Niveis;
 import br.com.garbo.models.Cliente;
+import br.com.garbo.models.DocumentoCPF;
+import br.com.garbo.models.DocumentoCnpj;
+import br.com.garbo.models.Prestador;
 import br.com.garbo.models.Usuario;
 import br.com.garbo.repository.Repositorio;
 import br.com.garbo.utilities.Utils;
 
-/**
- * Servlet implementation class CadastrosServlet
- */
-@WebServlet("/admin/cadastro")
+@WebServlet(urlPatterns = {"/admin/cadastro", "/admin/listaClientes"})
 public class CadastrosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,49 +28,58 @@ public class CadastrosServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String opcao = request.getParameter("opcao");
 		
-		try {
-			String pagina = "/WEB-INF/admin/";
-			if (opcao != null) {
-				switch (opcao) {
-				case "u":
-					pagina += "cadUsuarios.jsp";
-					break;
-				case "c":
-					pagina += "cadClientes.jsp";
-					
-					Collection<Usuario> listaUsuarios =
-							Repositorio.getUsuarioDao()
-							.listar()
-							.stream()
-							.filter(u -> u.getNivel().equals(Niveis.CLIENTE))
-							.collect(Collectors.toList());
-					
-					if (listaUsuarios.size() == 0) {
-						throw new Exception("Não existem usuários com o nível esperado.");
-					}
-					
-					request.setAttribute("usuarios", listaUsuarios);
-					
-					break;
-				case "p":
-					pagina += "cadPrestadores.jsp";
-					break;
-				default:
-					throw new Exception("Esta opção é inválida: " + opcao);
-				}
-				
-				request.getRequestDispatcher(pagina).forward(request, response);
-				
-			} else {
-				pagina += "home.jsp";
-				request.getRequestDispatcher(pagina).forward(request, response);
-			}
+		String caminho = request.getServletPath();
+		
+		if (caminho.equals("/admin/cadastro")) {
 			
-		} catch (Exception e) {
-			request.setAttribute("mensagemErro", e.getMessage());
-			request.getRequestDispatcher("/WEB-INF/admin/erro.jsp").forward(request, response);
+			String opcao = request.getParameter("opcao");
+			try {
+				String pagina = "/WEB-INF/admin/";
+				if (opcao != null) {
+					switch (opcao) {
+					case "u":
+						pagina += "cadUsuarios.jsp";
+						break;
+					case "c":
+						pagina += "cadClientes.jsp";
+
+						Collection<Usuario> listaUsuarios = Repositorio.getUsuarioDao().listar().stream()
+								.filter(u -> u.getNivel().equals(Niveis.CLIENTE)).collect(Collectors.toList());
+
+						if (listaUsuarios.size() == 0) {
+							throw new Exception("Não existem usuários com o nível esperado.");
+						}
+
+						request.setAttribute("usuarios", listaUsuarios);
+
+						break;
+					case "p":
+						pagina += "cadPrestadores.jsp";
+						break;
+					default:
+						throw new Exception("Esta opção é inválida: " + opcao);
+					}
+
+					request.getRequestDispatcher(pagina).forward(request, response);
+
+				} else {
+					pagina += "home.jsp";
+					request.getRequestDispatcher(pagina).forward(request, response);
+				}
+
+			} catch (Exception e) {
+				request.setAttribute("mensagemErro", e.getMessage());
+				request.getRequestDispatcher("/WEB-INF/admin/erro.jsp").forward(request, response);
+			} 
+		} else if(caminho.equals("/admin/listaClientes")){
+			try {
+				request.setAttribute("listaClientes", Repositorio.getClienteDao().listar());				
+				request.getRequestDispatcher("/WEB-INF/admin/listaClientes.jsp").forward(request, response);	
+			} catch (Exception e) {
+				request.setAttribute("mensagemErro", e.getMessage());
+				request.getRequestDispatcher("/WEB-INF/admin/erro.jsp").forward(request, response);
+			}			
 		}
 	}
 
@@ -85,7 +94,6 @@ public class CadastrosServlet extends HttpServlet {
 			case "c":
 				incluirCliente(request, response);
 				break;				
-
 			default:
 				break;
 			}
@@ -129,7 +137,30 @@ public class CadastrosServlet extends HttpServlet {
 		Repositorio.getClienteDao().incluir(cliente);
 		
 		request.setAttribute("listaClientes", Repositorio.getClienteDao().listar());
-		request.getRequestDispatcher("/WEB-INF/admin/listaClientes.jsp").forward(request, response);		
+		request.getRequestDispatcher("/WEB-INF/admin/listaClientes.jsp").forward(request, response);
+	}
+	
+	private void incluirPrestador(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		DocumentoCPF documento = new DocumentoCPF();
+		Usuario usuario = new Usuario();
+		documento.setNumero(request.getParameter("txtDocumento"));
+		usuario.setNome(request.getParameter("txtDocumento"));
+		String nome = request.getParameter("txtNome");
+		String email = request.getParameter("txtEmail");
+		String telefone = request.getParameter("txtTelefone");
+		usuario.setSenha(request.getParameter("txtSenha"));
+		
+		Prestador prest = new Prestador();		
+		prest.setDocumento(documento);
+		prest.setUsuario(usuario);
+		prest.setNome(nome);
+		prest.setEmail(email);
+		prest.setTelefone(telefone);
+		
+		Repositorio.getPrestadoresDao().incluir(prest);
+		
+		//request.setAttribute("listaClientes", Repositorio.getClienteDao().listar());
+		//request.getRequestDispatcher("/WEB-INF/admin/listaClientes.jsp").forward(request, response);
 	}	
-
 }

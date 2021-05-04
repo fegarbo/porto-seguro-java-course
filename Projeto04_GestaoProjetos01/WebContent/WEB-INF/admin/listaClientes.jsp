@@ -10,7 +10,11 @@
 	<%@ include file="cabecalho.jsp" %>
 	<div class="container">
 		<h2>Lista de Clientes</h2>
-		
+		<div style="margin: 5px;">
+			<a class="btn btn-primary" href="cadastro?opcao=c">
+				Novo Cliente
+			</a>
+		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
