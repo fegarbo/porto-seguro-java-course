@@ -84,5 +84,30 @@ public class UsuarioDao extends Dao<Usuario> {
 		return usuario;
 	}
 	
-	
+	public Usuario validar(String nome, String senha) throws Exception {		
+		
+		Usuario usuario = null;		
+		try {			
+			abrirConexao();
+			String sql = "SELECT * FROM USUARIOS WHERE NOME = ? AND SENHA = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setString(1, nome);
+			stmt.setString(2, Utils.verificarMD5(senha));
+			rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				usuario = new Usuario();
+				usuario.setNome(nome);
+				usuario.setSenha(senha);
+				usuario.setNivel(Utils.buscarNivel(rs.getString("NIVEL")));
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			fecharConexao();
+		}
+		
+		return usuario;
+	}
 }

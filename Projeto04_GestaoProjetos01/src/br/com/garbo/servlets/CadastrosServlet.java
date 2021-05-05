@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.garbo.enumerations.Niveis;
+import br.com.garbo.interfaces.IDocumento;
 import br.com.garbo.models.Cliente;
 import br.com.garbo.models.DocumentoCPF;
 import br.com.garbo.models.DocumentoCnpj;
@@ -93,6 +94,9 @@ public class CadastrosServlet extends HttpServlet {
 				break;
 			case "c":
 				incluirCliente(request, response);
+				break;
+			case "p":
+				incluirPrestador(request, response);
 				break;				
 			default:
 				break;
@@ -141,26 +145,42 @@ public class CadastrosServlet extends HttpServlet {
 	}
 	
 	private void incluirPrestador(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		DocumentoCPF documento = new DocumentoCPF();
-		Usuario usuario = new Usuario();
-		documento.setNumero(request.getParameter("txtDocumento"));
-		usuario.setNome(request.getParameter("txtDocumento"));
-		String nome = request.getParameter("txtNome");
-		String email = request.getParameter("txtEmail");
-		String telefone = request.getParameter("txtTelefone");
-		usuario.setSenha(request.getParameter("txtSenha"));
-		
-		Prestador prest = new Prestador();		
-		prest.setDocumento(documento);
-		prest.setUsuario(usuario);
-		prest.setNome(nome);
-		prest.setEmail(email);
-		prest.setTelefone(telefone);
-		
-		Repositorio.getPrestadoresDao().incluir(prest);
-		
-		//request.setAttribute("listaClientes", Repositorio.getClienteDao().listar());
-		//request.getRequestDispatcher("/WEB-INF/admin/listaClientes.jsp").forward(request, response);
+				
+		try {
+			Prestador prest = new Prestador();
+			Usuario usuario = new Usuario();
+			IDocumento doc;
+			
+			if (request.getParameter("optionCPF").equals("on")) {
+				doc = new DocumentoCPF();
+				doc.setNumero(request.getParameter("txtDocumento"));
+			}else {
+				doc = new DocumentoCnpj();
+				doc.setNumero(request.getParameter("txtDocumento"));
+			}
+
+			usuario.setNome(request.getParameter("txtDocumento"));
+			usuario.setSenha(request.getParameter("txtSenha"));
+			usuario.setNivel(Niveis.PREST);
+			
+			prest.setDocumento(doc);
+			prest.setUsuario(usuario);
+
+			String nome = request.getParameter("txtNome");
+			String email = request.getParameter("txtEmail");
+			String telefone = request.getParameter("txtTelefone");
+				
+			prest.setNome(nome);
+			prest.setEmail(email);
+			prest.setTelefone(telefone);
+			
+			Repositorio.getPrestadoresDao().incluir(prest);					
+			
+			request.setAttribute("listaPrestadores", Repositorio.getPrestadoresDao().listar());
+			request.getRequestDispatcher("/WEB-INF/admin/listaPrestadores.jsp").forward(request, response);
+		} catch (Exception e) {
+			request.setAttribute("mensagemErro", e.getMessage());
+			request.getRequestDispatcher("/WEB-INF/admin/erro.jsp").forward(request, response);
+		}
 	}	
 }
