@@ -1,7 +1,10 @@
 package br.com.garbo.utilities;
 
+import java.io.FileWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import br.com.garbo.enumerations.Niveis;
 
@@ -28,5 +31,19 @@ public final class Utils {
 		default:
 			return null;			
 		}		
+	}
+	
+	public static void gerarLog(String texto) {
+		try {
+			FileWriter writer = new FileWriter("C:\\Workspaces\\curso-java-avancado\\logs\\log.txt", true);
+			
+			String dataAtual = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(new Date());			
+			String linha = "[" + dataAtual + "] - " + texto + "\r\n";
+			writer.write(linha);
+			writer.close();
+			
+		} catch (Exception e) {
+			
+		}
 	}
 }

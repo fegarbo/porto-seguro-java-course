@@ -31,6 +31,6 @@
       </li>      
     </ul>
   </div>
-  <p class="text-white">Bem vindo(a), ${sessionScope.session_usuario.nome}</p>
+  <p style="float-right" class="text-white">Bem vindo(a), ${sessionScope.session_usuario.nome}</p>
   	<a href=<c:url value="/login" />>Log Off</a>
 </nav>

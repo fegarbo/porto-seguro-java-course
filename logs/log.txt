@@ -1,0 +1,67 @@
+[06/05/2021 - 18:41:10] - Aplicação finalizada
+[06/05/2021 - 18:41:11] - Aplicação iniciada
+[06/05/2021 - 18:42:02] - Aplicação finalizada
+[06/05/2021 - 18:42:03] - Aplicação iniciada
+[06/05/2021 - 18:42:14] - Aplicação finalizada.
+[06/05/2021 - 18:42:14] - Aplicação iniciada.
+[06/05/2021 - 18:42:55] - Aplicação finalizada.
+[06/05/2021 - 18:42:55] - Aplicação iniciada.
+[06/05/2021 - 18:43:16] - Aplicação finalizada.
+[06/05/2021 - 18:43:16] - Aplicação iniciada.
+[06/05/2021 - 18:47:18] - Aplicação finalizada.
+[06/05/2021 - 18:47:19] - Aplicação iniciada.
+[06/05/2021 - 18:47:59] - Aplicação finalizada.
+[06/05/2021 - 18:48:00] - Aplicação iniciada.
+[06/05/2021 - 18:49:20] - Atributo adicionado a sessão: session_usuario
+[06/05/2021 - 18:51:34] - Aplicação finalizada.
+[06/05/2021 - 18:51:34] - Aplicação iniciada.
+[06/05/2021 - 18:55:16] - Aplicação finalizada.
+[06/05/2021 - 18:55:17] - Aplicação iniciada.
+[06/05/2021 - 18:56:28] - Aplicação finalizada.
+[06/05/2021 - 18:56:29] - Aplicação iniciada.
+[06/05/2021 - 18:58:50] - Aplicação finalizada.
+[06/05/2021 - 18:58:51] - Aplicação iniciada.
+[06/05/2021 - 18:59:31] - Aplicação finalizada.
+[06/05/2021 - 18:59:32] - Aplicação iniciada.
+[06/05/2021 - 18:59:42] - Aplicação finalizada.
+[06/05/2021 - 18:59:42] - Aplicação iniciada.
+[06/05/2021 - 19:00:54] - Aplicação finalizada.
+[06/05/2021 - 19:00:54] - Aplicação iniciada.
+[06/05/2021 - 19:04:10] - Aplicação finalizada.
+[06/05/2021 - 19:04:23] - Aplicação iniciada.
+[06/05/2021 - 19:09:06] - Aplicação finalizada.
+[06/05/2021 - 19:09:09] - Aplicação iniciada.
+[06/05/2021 - 19:09:29] - Aplicação finalizada.
+[06/05/2021 - 19:09:41] - Aplicação iniciada.
+[06/05/2021 - 19:13:17] - Atributo alterado no request.
+[06/05/2021 - 19:13:36] - Atributo alterado no request.
+[06/05/2021 - 19:13:40] - Atributo adicionado a sessão: session_usuario
+[06/05/2021 - 19:13:40] - Atributo alterado no request.
+[06/05/2021 - 19:14:14] - Atributo alterado no request.
+[06/05/2021 - 19:14:14] - Atributo adicionado ao request: listaClientes
+[06/05/2021 - 19:15:27] - Atributo alterado no request.
+[06/05/2021 - 19:15:29] - Atributo alterado no request.
+[06/05/2021 - 19:16:50] - Atributo alterado no request.
+[06/05/2021 - 19:17:02] - Atributo adicionado ao request: usuarios
+[06/05/2021 - 19:17:15] - Atributo alterado no request.
+[06/05/2021 - 19:23:02] - Atributo removido da sessão.
+[06/05/2021 - 19:23:02] - Aplicação finalizada.
+[06/05/2021 - 19:23:06] - Aplicação iniciada.
+[06/05/2021 - 19:23:17] - Atributo adicionado ao request: mensagemErro
+[06/05/2021 - 19:23:32] - Aplicação finalizada.
+[06/05/2021 - 19:23:45] - Aplicação iniciada.
+[06/05/2021 - 19:24:03] - Atributo alterado no request.
+[06/05/2021 - 19:24:03] - Atributo alterado no request.
+[06/05/2021 - 19:24:09] - Atributo alterado no request.
+[06/05/2021 - 19:24:13] - Atributo adicionado a sessão: session_usuario
+[06/05/2021 - 19:24:13] - Atributo alterado no request.
+[06/05/2021 - 19:24:18] - Atributo alterado no request.
+[06/05/2021 - 19:24:49] - Atributo adicionado ao request: listaPrestadores
+[06/05/2021 - 19:31:25] - Atributo alterado no request.
+[06/05/2021 - 19:31:35] - Atributo alterado no request.
+[06/05/2021 - 19:31:39] - Atributo alterado no request.
+[06/05/2021 - 19:31:48] - Atributo adicionado ao request: listaPrestadores
+[06/05/2021 - 19:52:16] - Atributo removido da sessão.
+[06/05/2021 - 19:52:16] - Aplicação finalizada.
+[06/05/2021 - 19:52:20] - Aplicação iniciada.
+[06/05/2021 - 20:02:19] - Sessão encerrada: 775BAF9081AC01824AFABF5644A2F6F1

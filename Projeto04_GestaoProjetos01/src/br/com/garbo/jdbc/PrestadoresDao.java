@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import br.com.garbo.interfaces.IDocumento;
 import br.com.garbo.models.DocumentoCPF;
 import br.com.garbo.models.DocumentoCnpj;
 import br.com.garbo.models.Prestador;
@@ -35,7 +36,6 @@ public class PrestadoresDao extends Dao<Prestador> {
 	@Override
 	public Collection<Prestador> listar() throws Exception {
 		
-		//IDocumento idoc = (prest.getDocumento().getNumero().length() == 11) ? new DocumentoCPF(): new DocumentoCnpj();
 		Collection<Prestador> prestadores = new ArrayList<Prestador>();		
 		try {				
 			abrirConexao();
@@ -44,8 +44,10 @@ public class PrestadoresDao extends Dao<Prestador> {
 			rs = stmt.executeQuery();
 			
 			while (rs.next()) {
-				Prestador p = new Prestador();	
-				p.setDocumento((p.getDocumento().getNumero().length() == 11) ? new DocumentoCPF() : new DocumentoCnpj());				
+				Prestador p = new Prestador();
+				String documento = rs.getString("DOCUMENTO");				
+				IDocumento doc = (documento.length() == 11) ? new DocumentoCPF() : new DocumentoCnpj();				
+				p.setDocumento(doc);				
 				p.setNome(rs.getString("NOME"));
 				p.setEmail(rs.getString("EMAIL"));
 				p.setTelefone(rs.getString("TELEFONE"));

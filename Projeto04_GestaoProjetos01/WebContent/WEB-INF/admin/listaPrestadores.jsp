@@ -25,12 +25,12 @@
 				</tr>			
 			</thead>
 			<tbody>
-				<c:forEach var="cliente" items="${listaPrestadores}">
+				<c:forEach var="prestador" items="${listaPrestadores}">
 					<tr>
-						<td>${prestador.documento}</td>
+						<td>${prestador.documento.numero}</td>
 						<td>${prestador.nome}</td>
-						<td>${cliente.email}</td>
-						<td>${cliente.telefone}</td>
+						<td>${prestador.email}</td>
+						<td>${prestador.telefone}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
