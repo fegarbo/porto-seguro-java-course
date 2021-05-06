@@ -5,13 +5,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="cadastro">Gestão de Projetos</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> -->
+<!--     <span class="navbar-toggler-icon"></span> -->
+<!--   </button> -->
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" href="cadastro?opcao=u">Cadastros Usuários</a></li>
-<!--       <li class="nav-item"><a class="nav-link" href="cadastro?opcao=c">Cadastro Clientes</a></li> -->
+      <li class="nav-item"><a class="nav-link" href="cadastro?opcao=u">Cadastro Usuários</a></li>
       <li class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    	Clientes
@@ -21,7 +20,17 @@
 			<a class="dropdown-item" href="listaClientes">Lista</a>
 	     </div>
       </li>
-      <li class="nav-item"><a class="nav-link" href="cadastro?opcao=p">Cadastro Prestadores</a></li>
+      <li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    	Prestadores
+	    </a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<a class="dropdown-item" href="cadastro?opcao=p">Cadastro</a>
+			<a class="dropdown-item" href="listaPrestadores">Lista</a>
+	     </div>
+      </li>      
     </ul>
   </div>
+  <p class="text-white">Bem vindo(a), ${sessionScope.session_usuario.nome}</p>
+  	<a href=<c:url value="/login" />>Log Off</a>
 </nav>

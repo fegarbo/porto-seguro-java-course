@@ -22,7 +22,7 @@
 					<button type="submit" class="btn btn-primary">Validar Usuário</button>
 					
 					<c:if test="${resultado ne null}">					
-						<div class="alert alert-success" role="alert" style="margin-top:10px;">
+						<div class="alert alert-danger" role="alert" style="margin-top:10px;">
 						  ${resultado}
 						</div>
 					</c:if>

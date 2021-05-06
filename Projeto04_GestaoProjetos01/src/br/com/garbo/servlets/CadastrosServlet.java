@@ -20,7 +20,9 @@ import br.com.garbo.models.Usuario;
 import br.com.garbo.repository.Repositorio;
 import br.com.garbo.utilities.Utils;
 
-@WebServlet(urlPatterns = {"/admin/cadastro", "/admin/listaClientes"})
+@WebServlet(urlPatterns = {"/admin/cadastro",
+							"/admin/listaClientes",
+							"/admin/listaPrestadores"})
 public class CadastrosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,7 +30,7 @@ public class CadastrosServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		
 		String caminho = request.getServletPath();
 		
@@ -77,6 +79,14 @@ public class CadastrosServlet extends HttpServlet {
 			try {
 				request.setAttribute("listaClientes", Repositorio.getClienteDao().listar());				
 				request.getRequestDispatcher("/WEB-INF/admin/listaClientes.jsp").forward(request, response);	
+			} catch (Exception e) {
+				request.setAttribute("mensagemErro", e.getMessage());
+				request.getRequestDispatcher("/WEB-INF/admin/erro.jsp").forward(request, response);
+			}			
+		} else if(caminho.equals("/admin/listaPrestadores")){
+			try {
+				request.setAttribute("listaPrestadores", Repositorio.getPrestadoresDao().listar());				
+				request.getRequestDispatcher("/WEB-INF/admin/listaPrestadores.jsp").forward(request, response);	
 			} catch (Exception e) {
 				request.setAttribute("mensagemErro", e.getMessage());
 				request.getRequestDispatcher("/WEB-INF/admin/erro.jsp").forward(request, response);

@@ -1,6 +1,7 @@
 package br.com.garbo.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,16 @@ public class loginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("login.jsp");
+		
+		HttpSession session = request.getSession();
+		Usuario usuario = (Usuario)session.getAttribute("session_usuario");
+		
+		if (usuario != null) {
+			session.invalidate();
+			//session.removeAttribute("session_usuario");
+		}
+
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,10 +46,12 @@ public class loginServlet extends HttpServlet {
 			} else {
 				HttpSession session = request.getSession();
 				session.setAttribute("session_usuario", usuario);
+				response.sendRedirect(request.getContextPath() + "/admin/cadastro");
 			}
 			
 		} catch (Exception e) {
-			
+			request.setAttribute("mensagemErro", e.getMessage());
+			request.getRequestDispatcher("/WEB-INF/admin/erro.jsp").forward(request, response);
 		}
 	}
 
