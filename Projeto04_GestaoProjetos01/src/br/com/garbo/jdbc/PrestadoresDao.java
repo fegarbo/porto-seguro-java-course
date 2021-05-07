@@ -46,7 +46,8 @@ public class PrestadoresDao extends Dao<Prestador> {
 			while (rs.next()) {
 				Prestador p = new Prestador();
 				String documento = rs.getString("DOCUMENTO");				
-				IDocumento doc = (documento.length() == 11) ? new DocumentoCPF() : new DocumentoCnpj();				
+				IDocumento doc = (documento.length() == 11) ? new DocumentoCPF() : new DocumentoCnpj();
+				doc.setNumero(documento);
 				p.setDocumento(doc);				
 				p.setNome(rs.getString("NOME"));
 				p.setEmail(rs.getString("EMAIL"));

@@ -65,3 +65,17 @@
 [06/05/2021 - 19:52:16] - Aplicação finalizada.
 [06/05/2021 - 19:52:20] - Aplicação iniciada.
 [06/05/2021 - 20:02:19] - Sessão encerrada: 775BAF9081AC01824AFABF5644A2F6F1
+[06/05/2021 - 20:18:48] - Atributo alterado no request.
+[06/05/2021 - 20:18:48] - Sessão criada: 00CE9BF7F0428450618164B3B99E73FA
+[06/05/2021 - 20:18:48] - Atributo alterado no request.
+[06/05/2021 - 20:18:57] - Atributo alterado no request.
+[06/05/2021 - 20:18:58] - Atributo adicionado a sessão: session_usuario
+[06/05/2021 - 20:18:58] - Atributo alterado no request.
+[06/05/2021 - 20:19:01] - Atributo alterado no request.
+[06/05/2021 - 20:21:07] - Atributo adicionado ao request: listaPrestadores
+[06/05/2021 - 20:21:11] - Atributo alterado no request.
+[06/05/2021 - 20:21:11] - Atributo adicionado ao request: listaClientes
+[06/05/2021 - 20:21:13] - Atributo alterado no request.
+[06/05/2021 - 20:31:08] - Atributo removido da sessão.
+[06/05/2021 - 20:31:08] - Aplicação finalizada.
+[06/05/2021 - 20:31:11] - Aplicação iniciada.
