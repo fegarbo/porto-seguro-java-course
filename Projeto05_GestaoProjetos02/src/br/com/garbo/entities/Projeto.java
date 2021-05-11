@@ -1,4 +1,4 @@
-package br.com.portoseguro.entities;
+package br.com.garbo.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
