@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import br.com.garbo.entities.Projeto;
+
 public class GenericDao<T> implements Dao<T> {
 
 	private final Class<T> classe;
@@ -25,7 +27,7 @@ public class GenericDao<T> implements Dao<T> {
 	@Override
 	public List<T> listar() {
 		em = JpaUtil.getEntityManager();
-		TypedQuery<T> query = em.createQuery("From " + classe.getSimpleName(), classe);
+		TypedQuery<T> query = em.createQuery("FROM " + classe.getSimpleName(), classe);
 		return query.getResultList();	
 	}
 
