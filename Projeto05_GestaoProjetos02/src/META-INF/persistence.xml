@@ -3,6 +3,9 @@
 	<persistence-unit name="jpaPU" transaction-type="RESOURCE_LOCAL">
 		<class>br.com.garbo.entities.Cliente</class>
 		<class>br.com.garbo.entities.Projeto</class>
+		<class>br.com.garbo.entities.Pagamento</class>
+		<class>br.com.garbo.entities.Prestador</class>
+		<class>br.com.garbo.entities.Cronograma</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/db_projetos"/>

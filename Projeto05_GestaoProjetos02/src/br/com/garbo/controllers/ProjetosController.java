@@ -53,7 +53,9 @@ public class ProjetosController {
 	@RequestMapping("/projetos/lista/{id}")
 	public String listar(@PathVariable("id") int idCliente, ModelMap model) {
 		try {
-			List<Projeto> listaProjetos = new MetodosDao().listarProjetos(idCliente);
+			List<Projeto> listaProjetos = new MetodosDao().listarProjetos(idCliente);			
+			Cliente cliente = new GenericDao<Cliente>(Cliente.class).buscar(idCliente);			
+			model.addAttribute("nomeCliente", cliente.getNome());
 			model.addAttribute("listaProjetos", listaProjetos);
 			return "listas/listaProjetos";
 			
