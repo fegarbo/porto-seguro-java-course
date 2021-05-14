@@ -7,13 +7,13 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Lista de Clientes</h1>
-		<!-- 	<button class="btn" ><i class="fa fa-home"></i>Home</button> -->
+		<h1>Lista de Prestadores</h1>
 		<a href=<c:url value="/"/> class="btn btn-primary">Voltar para o menu</a>
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th>DOCUMENTO</th>
+					<th>USUARIO</th>
 					<th>NOME</th>
 					<th>EMAIL</th>
 					<th>TELEFONE</th>
@@ -21,14 +21,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="c" items="${listaClientes}">
+				<c:forEach var="p" items="${listaPrestadores}">
 					<tr>
-						<td>${c.id}</td>
-						<td>${c.nome}</td>
-						<td>${c.telefone}</td>
-						<td>${c.email}</td>
+						<td>${p.documento}</td>
+						<td>${p.usuario}</td>
+						<td>${p.nome}</td>
+						<td>${p.email}</td>						
+						<td>${p.telefone}</td>
 						<td>
-							<a href=<c:url value="/projetos/lista/${c.id}" />>Ver Projetos</a>
+							<a href=<c:url value="/pagamentos/lista/${p.documento}" />>Ver Pagamentos</a>
 						</td>
 					</tr>
 				</c:forEach>

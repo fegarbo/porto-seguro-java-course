@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import br.com.garbo.entities.Pagamento;
 import br.com.garbo.entities.Projeto;
 
 //metodos especificos de cada entidade
@@ -19,4 +20,12 @@ public class MetodosDao {
 		query.setParameter("id", idCliente);		
 		return query.getResultList();
 	}
+	
+	public List<Pagamento> listarPagamentos(String documento){
+		em = JpaUtil.getEntityManager();
+		TypedQuery<Pagamento> query = em.createQuery(
+				"SELECT p FROM Pagamento p WHERE p.prestador.documento = :documento", Pagamento.class);
+		query.setParameter("documento", documento);		
+		return query.getResultList();
+	}	
 }

@@ -5,8 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import br.com.garbo.entities.Projeto;
-
 public class GenericDao<T> implements Dao<T> {
 
 	private final Class<T> classe;

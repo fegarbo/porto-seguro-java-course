@@ -14,7 +14,13 @@
 			</li>
 			<li>
 				<a href=<c:url value="/projetos/cadastro" />>Cadastro de Projetos</a>
-			</li>			
+			</li>
+			<li>
+				<a href=<c:url value="/prestadores/lista" />>Lista de Prestadores</a>
+			</li>
+			<li>
+				<a href=<c:url value="/pagamentos/cadastro" />>Cadastro de Pagamentos</a>
+			</li>					
 		</ul>
 	</div>
 </body>
