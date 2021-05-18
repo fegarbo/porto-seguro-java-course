@@ -20,7 +20,10 @@
 			</li>
 			<li>
 				<a href=<c:url value="/pagamentos/cadastro" />>Cadastro de Pagamentos</a>
-			</li>					
+			</li>
+			<li>
+				<a href=<c:url value="/clientes/listaProjetos" />>Qtde. de Projetos por Cliente</a>
+			</li>						
 		</ul>
 	</div>
 </body>

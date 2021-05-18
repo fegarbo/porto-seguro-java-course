@@ -38,11 +38,14 @@ public class PagamentosController {
 	}
 	
 	@PostMapping(value = "/cadpagamento")
-	public String incluir(@RequestParam("documentoPrest") String documentoPrest, Pagamento pagamento, ModelMap model) {
+	public String incluir(@RequestParam("documentoPrest") String documentoPrest,
+						  @RequestParam("tipo") String tipo, 
+						  Pagamento pagamento, ModelMap model) {
 		try {
 			GenericDao<Prestador> daoc = new GenericDao<>(Prestador.class);
 			Prestador prestador = daoc.buscar(documentoPrest);
 			pagamento.setPrestador(prestador);
+			
 			//TODO incluir Tipo no objeto pagamento
 			GenericDao<Pagamento> daop = new GenericDao<>(Pagamento.class);
 			daop.adicionar(pagamento);

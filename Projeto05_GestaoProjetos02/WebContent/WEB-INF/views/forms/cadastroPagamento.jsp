@@ -22,7 +22,8 @@
 						<label>Tipo:</label>
 						<select class="form-control" name="tipo">
 							<c:forEach var="t" items="${enumTipo}">
-								<option value="${t.valor}">${t}</option>								
+<%-- 								<option value="${t.valor}">${t}</option>								 --%>
+								<option value="">${t}</option>
 							</c:forEach>
 						</select>
 					</div>					
