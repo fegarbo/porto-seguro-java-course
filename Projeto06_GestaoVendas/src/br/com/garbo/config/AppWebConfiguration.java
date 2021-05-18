@@ -8,6 +8,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import br.com.garbo.dao.ClientesDao;
+
 @EnableWebMvc
 @ComponentScan(basePackages = "br.com.garbo.controllers")
 public class AppWebConfiguration {
@@ -30,5 +32,10 @@ public class AppWebConfiguration {
 		dataSource.setPassword("admin123");
 		
 		return dataSource;
+	}
+	
+	@Bean
+	public ClientesDao getClientesDao() {
+		return new ClientesDao(getDataSource());
 	}
 }
