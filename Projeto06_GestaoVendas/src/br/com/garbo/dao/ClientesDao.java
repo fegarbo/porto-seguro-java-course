@@ -45,5 +45,35 @@ public class ClientesDao implements Dao<Cliente> {
 		}
 		return clientes;
 	}
+
+	@Override
+	public void alterar(Cliente cliente) throws Exception {
+		try {
+			String sql = "UPDATE CLIENTES SET NOME = ?, EMAIL = ?, "
+					+ "TELEFONE = ?, WHERE DOCUMENTO = ?";
+			this.jdbcTemplate.update(
+					sql,
+					cliente.getNome(),
+					cliente.getEmail(),
+					cliente.getTelefone(),
+					cliente.getDocumento());
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public Cliente buscar(Object key) throws Exception {
+		Cliente cliente = null;
+		try {
+			cliente = this.jdbcTemplate.queryForObject(
+					"SELECT * FROM CLIENTES WHERE DOCUMENTO=?",
+					new String[] {key.toString()},
+					new ClienteMapper());
+		} catch (Exception e) {
+			throw e;
+		}
+		return cliente;
+	}
 	
 }

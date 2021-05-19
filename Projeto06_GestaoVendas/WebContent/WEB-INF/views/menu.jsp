@@ -11,7 +11,10 @@
 		<ul>
 			<li>
 				<a href=<c:url value="/clientes/cadastro" />>Cadastro de Clientes</a>
-			</li>					
+			</li>
+			<li>
+				<a href=<c:url value="/clientes/lista" />>Lista de Clientes</a>
+			</li>							
 		</ul>
 	</div>
 </body>

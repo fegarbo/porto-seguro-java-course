@@ -10,30 +10,30 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
-				<h1>Cadastro de Clientes</h1>
-				<form:form action="/Projeto06_GestaoVendas/cadcliente" 
+				<h1>Alteração de Clientes</h1>
+				<form:form action="/Projeto06_GestaoVendas/alteracliente" 
 					modelAttribute="cliente" method="post">
 					<div class="form-group">
 						<form:label path="documento">CPF:</form:label>
-						<form:input path="documento" cssClass="form-control"/>
-						<form:errors path="documento" cssClass="text-danger"/>
+						<form:input path="documento" readonly="true" cssClass="form-control"/>
+						<form:errors path=documento cssClass="text-danger"/>
 					</div>
 					<div class="form-group">
 						<form:label path="nome">Nome:</form:label>
 						<form:input path="nome" cssClass="form-control"/>
-						<form:errors path="nome" cssClass="text-danger" />
+						<form:errors path=nome cssClass="text-danger" />
 					</div>
 					<div class="form-group">
 						<form:label path="telefone">Telefone:</form:label>
 						<form:input path="telefone" cssClass="form-control"/>
-						<form:errors path="telefone" cssClass="text-danger" />
+						<form:errors path=telefone cssClass="text-danger" />
 					</div>
 					<div class="form-group">
-						<form:label path="email">Email:</form:label>
+						<form:label path="email">E-mail:</form:label>
 						<form:input path="email" cssClass="form-control"/>
-						<form:errors path="email" cssClass="text-danger" />
+						<form:errors path=email cssClass="text-danger" />
 					</div>
-					<button type="submit" class="btn btn-primary">Incluir Cliente</button>											
+					<button type="submit" class="btn btn-primary">Alterar Cliente</button>											
 				</form:form>
 			</div>
 		</div>
