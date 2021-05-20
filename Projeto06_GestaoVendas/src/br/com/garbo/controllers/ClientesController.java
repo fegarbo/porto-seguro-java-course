@@ -101,6 +101,17 @@ public class ClientesController {
 		}
 	}
 	
+	@GetMapping("/clientes/remocao/{id}")
+	public String remover(@PathVariable("id") String documento, Model model) {
+		try {
+			clientesDao.remover(documento);
+			return "redirect:/clientes/lista";
+		} catch (Exception e) {
+			model.addAttribute("erro", e.getMessage());
+			return "erro";
+		}
+	}
+	
 	
 	
 	

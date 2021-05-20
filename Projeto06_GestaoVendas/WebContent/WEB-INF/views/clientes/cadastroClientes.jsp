@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="col-6">
 				<h1>Cadastro de Clientes</h1>
-				<form:form action="/Projeto06_GestaoVendas/cadcliente" 
+				<form:form action="/Projeto06_GestaoVendas/cadCliente" 
 					modelAttribute="cliente" method="post">
 					<div class="form-group">
 						<form:label path="documento">CPF:</form:label>

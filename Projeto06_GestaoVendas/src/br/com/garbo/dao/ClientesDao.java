@@ -50,7 +50,7 @@ public class ClientesDao implements Dao<Cliente> {
 	public void alterar(Cliente cliente) throws Exception {
 		try {
 			String sql = "UPDATE CLIENTES SET NOME = ?, EMAIL = ?, "
-					+ "TELEFONE = ?, WHERE DOCUMENTO = ?";
+					+ "TELEFONE = ? WHERE DOCUMENTO = ?";
 			this.jdbcTemplate.update(
 					sql,
 					cliente.getNome(),
@@ -74,6 +74,16 @@ public class ClientesDao implements Dao<Cliente> {
 			throw e;
 		}
 		return cliente;
+	}
+
+	@Override
+	public void remover(Object key) throws Exception {
+		try {
+			jdbcTemplate.update("DELETE FROM CLIENTES WHERE DOCUMENTO = ?", key.toString());
+		} catch (Exception e) {
+			throw e;
+		}
+		
 	}
 	
 }
