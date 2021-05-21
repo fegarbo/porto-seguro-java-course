@@ -5,8 +5,8 @@ public class Produto {
 	private int id;
 	private String descricao;
 	private String unidade;
-	private Double preco;
-	private Categoria categoria;
+	private double preco;
+	private int categoria;
 	private byte[] imagem;
 	
 	public int getId() {
@@ -33,10 +33,10 @@ public class Produto {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-	public Categoria getCategoria() {
+	public int getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(Categoria categoria) {
+	public void setCategoria(int categoria) {
 		this.categoria = categoria;
 	}
 	public byte[] getImagem() {
