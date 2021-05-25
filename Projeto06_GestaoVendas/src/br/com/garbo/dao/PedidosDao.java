@@ -1,12 +1,15 @@
 package br.com.garbo.dao;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import br.com.garbo.mapper.ClientePedidosMapper;
 import br.com.garbo.models.Pedido;
+import br.com.garbo.view.models.ClientePedidosVM;
 
 public class PedidosDao implements Dao<Pedido> {
 
@@ -17,9 +20,61 @@ public class PedidosDao implements Dao<Pedido> {
 	}
 	
 	@Override
-	public void incluir(Pedido item) throws Exception {
-		// TODO Auto-generated method stub
+	public void incluir(Pedido pedido) throws Exception {
+		try {
+			String sql = "INSERT INTO PEDIDOS (NUMEROPEDIDO, DATAPEDIDO, DOCCLIENTE) "
+					+ "VALUES (?,?,?)";
+			jdbcTemplate.update(sql,
+					pedido.getNumeroPedido(),
+					new java.sql.Date(pedido.getDataPedido().getTime()),
+					pedido.getDocumentoCliente());
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public Collection<ClientePedidosVM> listarPedidos(String documento) throws Exception {
+		Collection<ClientePedidosVM> pedidos = new ArrayList<>();
+		try {
+			String sql = "SELECT "
+					+ "P.ID AS idPedido, "
+					+ "P.NUMEROPEDIDO AS pedido, "
+					+ "P.DATAPEDIDO AS data, "
+					+ "C.DOCUMENTO AS documento, "
+					+ "C.NOME AS cliente "
+					+ "FROM "
+					+ "PEDIDOS P, CLIENTES c "
+					+ "WHERE "
+					+ "P.DOCCLIENTE = C.DOCUMENTO AND C.DOCUMENTO = ?";
+			
+			pedidos = jdbcTemplate.query(sql,
+					new String[] {documento},
+					new ClientePedidosMapper());
+			
+		} catch (Exception e) {
+			throw e;
+		}
 		
+		return pedidos;
+	}
+	
+	public ClientePedidosVM buscarPedido(int idPedido) throws Exception {
+		ClientePedidosVM pedidosVM = new ClientePedidosVM();
+		try {
+			String sql ="SELECT "
+					+ "P.NUMEROPEDIDO AS pedido, "
+					+ "C.NOME AS cliente "
+					+ "FROM PEDIDOS P, CLIENTES c "
+					+ "WHERE "
+					+ "P.DOCCLIENTE = C.DOCUMENTO "
+					+ "AND P.ID = ?";
+			pedidosVM = jdbcTemplate.queryForObject(sql, new Integer[] {idPedido}, new ClientePedidosMapper());
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		return pedidosVM;
 	}
 
 	@Override

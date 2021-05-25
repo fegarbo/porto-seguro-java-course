@@ -26,7 +26,7 @@
 						<td>${p.descricao}</td>
 						<td>${p.unidade}</td>
 						<td><fmt:formatNumber value="${p.preco}" type="currency" /></td>
-						<td><img src=<c:url value="/imagem/${p.id}" /> width="75" /></td>						
+						<td><img src=<c:url value="/imagem/${p.id}" /> width="70" /></td>						
 						<td>
 							<a class="btn btn-primary" href=<c:url value="/clientes/alteracao/${c.documento}" />>Alterar</a>
 						</td>

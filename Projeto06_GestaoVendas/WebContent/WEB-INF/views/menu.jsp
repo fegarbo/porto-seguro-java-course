@@ -9,18 +9,11 @@
 	<div class="container">
 		<h1>Menu de Opções</h1>
 		<ul>
-			<li>
-				<a href=<c:url value="/clientes/cadastro" />>Cadastro de Clientes</a>
-			</li>
-			<li>
-				<a href=<c:url value="/clientes/lista" />>Lista de Clientes</a>
-			</li>
-			<li>
-				<a href=<c:url value="/produtos/cadastro" />>Cadastro de Produtos</a>
-			</li>
-			<li>
-				<a href=<c:url value="/produtos/lista" />>Lista de Produtos</a>
-			</li>											
+			<li><a href=<c:url value="/clientes/cadastro" />>Cadastro de Clientes</a></li>
+			<li><a href=<c:url value="/clientes/lista" />>Lista de Clientes</a></li>
+			<li><a href=<c:url value="/produtos/cadastro" />>Cadastro de Produtos</a></li>
+			<li><a href=<c:url value="/produtos/lista" />>Lista de Produtos</a></li>
+			<li><a href=<c:url value="/pedidos/cadastro" />>Inclusão de Pedidos</a></li>	
 		</ul>
 	</div>
 </body>
