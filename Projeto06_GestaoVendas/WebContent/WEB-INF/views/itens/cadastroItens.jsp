@@ -39,7 +39,10 @@
 			<div class="col-6">
 				<h4>Itens do Pedido</h4>
 				<c:forEach var="i" items="${itensPedido}">
-					<div class="alert alert-success">
+					<div class="alert alert-success" style="marin-top:10px;">
+						<div style="float:right;">
+							<a href=<c:url value="/itens/remover/${i.idItem}"/>>[X]</a>
+						</div>
 						<strong>DESCRIÇÃO: </strong>${i.nomeProduto}<br/>
 						<strong>QTDE: </strong>${i.quantidade}<br/>
 						<strong>VALOR: </strong>${i.valorTotal}

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -65,19 +66,18 @@ public class ItensController {
 		}
 	}
 	
-//	@GetMapping("/itens/pedido")
-//	public String listarItensPedido(@RequestParam("idpedido") int idPedido, Model model) {
-//		try {
-//			Collection<ItensPedidoVM> itensPedidoVM = itensDao.listarItensPedido(idPedido);
-//			model.addAttribute("itensPedido", itensPedidoVM);
-//			
-//			return "itens/ItensPedido";
-//			
-//		} catch (Exception e) {
-//			model.addAttribute("erro", e.getMessage());
-//			return "erro";
-//		}			
-//	}
+	@GetMapping("/itens/remover/{id}")
+	public String remover(@PathVariable("id") int idItem, Model model) {
+		try {
+			int idPedido = itensDao.buscar(idItem).getIdPedido();
+			itensDao.remover(idItem);			
+			return "redirect:/itens/gestao?idpedido=" + idPedido;
+			
+		} catch (Exception e) {
+			model.addAttribute("erro", e.getMessage());
+			return "erro";
+		}
+	}
 	
 	
 	

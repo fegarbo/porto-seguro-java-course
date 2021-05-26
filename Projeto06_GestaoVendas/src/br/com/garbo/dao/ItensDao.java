@@ -47,20 +47,35 @@ public class ItensDao implements Dao<Item> {
 
 	@Override
 	public Item buscar(Object key) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Item item = null;
+		try {
+			String sql = "SELECT I.ID AS id, I.IDPEDIDO AS idPedido, "
+					+ "I.IDPRODUTO AS idProduto, I.QUANTIDADE AS quantidade "
+					+ "FROM ITENS I WHERE I.ID = ?";
+			item = jdbcTemplate.queryForObject(sql, Item.class, (int)key);
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		return item;
 	}
 
 	@Override
 	public void remover(Object key) throws Exception {
-		// TODO Auto-generated method stub
-		
+		try {
+			String sql = "DELETE FROM ITENS WHERE ID=?";
+			jdbcTemplate.update(sql, (int)key);
+			
+		} catch (Exception e) {
+			throw e;
+		}		
 	}
 	
 	public Collection<ItensPedidoVM> listarItensPedido(int idPedido) throws Exception {
 		Collection<ItensPedidoVM> itensPedido = new ArrayList<>();
 		try {
-			String sql = "SELECT "
+			String sql = "SELECT I.ID AS id, "
 					+ "P.DESCRICAO AS nomeProduto, "
 					+ "I.QUANTIDADE AS quantidade, "
 					+ "(P.PRECO * I.QUANTIDADE) AS valorTotal "

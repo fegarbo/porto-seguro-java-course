@@ -11,7 +11,8 @@ public class ItensPedidoMapper implements RowMapper<ItensPedidoVM> {
 
 	@Override
 	public ItensPedidoVM mapRow(ResultSet rs, int rowNum) throws SQLException {
-		ItensPedidoVM vm = new ItensPedidoVM();
+		ItensPedidoVM vm = new ItensPedidoVM();		
+		vm.setIdItem(rs.getInt("id"));
 		vm.setNomeProduto(rs.getString("nomeProduto"));
 		vm.setQuantidade(rs.getInt("quantidade"));
 		vm.setValorTotal(rs.getDouble("valorTotal"));
