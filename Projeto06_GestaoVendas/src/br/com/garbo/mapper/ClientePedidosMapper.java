@@ -13,7 +13,7 @@ public class ClientePedidosMapper implements RowMapper<ClientePedidosVM> {
 	public ClientePedidosVM mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 		ClientePedidosVM vm = new ClientePedidosVM();
-		vm.setIdPedido(rs.getInt("idPedido"));
+		vm.setIdPedido(rs.getInt("id"));
 		vm.setPedido(rs.getString("pedido"));
 		vm.setData(rs.getDate("data"));
 		vm.setCliente(rs.getString("cliente"));

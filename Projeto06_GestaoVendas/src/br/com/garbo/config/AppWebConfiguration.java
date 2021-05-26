@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.garbo.dao.ClientesDao;
+import br.com.garbo.dao.ItensDao;
 import br.com.garbo.dao.PedidosDao;
 import br.com.garbo.dao.ProdutosDao;
 
@@ -51,6 +52,11 @@ public class AppWebConfiguration {
 	@Bean
 	public PedidosDao getPedidosDao() {
 		return new PedidosDao(getDataSource());
+	}
+	
+	@Bean
+	public ItensDao getItensDao() {
+		return new ItensDao(getDataSource());
 	}
 	
 	//Utilizado para permitir acesso a dados do formulario multiplo (multi-part)

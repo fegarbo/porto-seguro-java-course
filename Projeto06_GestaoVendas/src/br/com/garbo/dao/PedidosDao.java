@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import br.com.garbo.mapper.ClientePedidosMapper;
@@ -49,7 +50,7 @@ public class PedidosDao implements Dao<Pedido> {
 			
 			pedidos = jdbcTemplate.query(sql,
 					new String[] {documento},
-					new ClientePedidosMapper());
+					BeanPropertyRowMapper.newInstance(ClientePedidosVM.class));
 			
 		} catch (Exception e) {
 			throw e;
@@ -61,13 +62,16 @@ public class PedidosDao implements Dao<Pedido> {
 	public ClientePedidosVM buscarPedido(int idPedido) throws Exception {
 		ClientePedidosVM pedidosVM = new ClientePedidosVM();
 		try {
-			String sql ="SELECT "
+			String sql = "SELECT "
+					+ "P.ID AS id, "
 					+ "P.NUMEROPEDIDO AS pedido, "
+					+ "P.DATAPEDIDO AS data, "
+					+ "C.DOCUMENTO AS documento, "
 					+ "C.NOME AS cliente "
-					+ "FROM PEDIDOS P, CLIENTES c "
+					+ "FROM "
+					+ "PEDIDOS P, CLIENTES c "
 					+ "WHERE "
-					+ "P.DOCCLIENTE = C.DOCUMENTO "
-					+ "AND P.ID = ?";
+					+ "P.DOCCLIENTE = C.DOCUMENTO AND P.ID = ?";
 			pedidosVM = jdbcTemplate.queryForObject(sql, new Integer[] {idPedido}, new ClientePedidosMapper());
 			
 		} catch (Exception e) {
