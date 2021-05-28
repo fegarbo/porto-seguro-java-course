@@ -21,7 +21,7 @@ public class PagamentosDao {
 	}
 	
 	public List<Pagamento> list(){
-		TypedQuery<Pagamento> query = manager.createNamedQuery("SELECT p FROM Pagamento p", Pagamento.class);
+		TypedQuery<Pagamento> query = manager.createQuery("SELECT p FROM Pagamento p", Pagamento.class);
 		return query.getResultList();
 	}
 	

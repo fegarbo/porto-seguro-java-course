@@ -17,9 +17,9 @@ public class JpaConfiguration {
 
 	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
-		JpaTransactionManager tManager = new JpaTransactionManager();
-		tManager.setEntityManagerFactory(emf);
-		return transactionManager(emf);
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(emf);
+		return transactionManager;
 	}
 	
 	@Bean
@@ -29,7 +29,7 @@ public class JpaConfiguration {
 		dataSource.setUrl("jdbc:mysql://localhost:3307/db_pagamentos");
 		dataSource.setUsername("root");
 		dataSource.setPassword("admin123");
-		return dataSource();
+		return dataSource;
 	}
 	
 	private Properties getProperties() {
@@ -43,15 +43,15 @@ public class JpaConfiguration {
 	
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
-		entityManager.setDataSource(dataSource());
-		entityManager.setPackagesToScan("br.com.garbo.models");
+		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+		em.setDataSource(dataSource());
+		em.setPackagesToScan("br.com.garbo.models");
 		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		entityManager.setJpaVendorAdapter(vendorAdapter);
-		entityManager.setJpaProperties(getProperties());
+		em.setJpaVendorAdapter(vendorAdapter);
+		em.setJpaProperties(getProperties());
 		
-		return entityManager;
+		return em;
 		
 	}
 }

@@ -34,7 +34,24 @@
 						<input type="text" class="form-control" name="quantidade">					
 					</div>
 					<button type="submit" class="btn btn-primary">Incluir Item</button>							
-				</form>				
+				</form>
+				<hr/>
+				
+				<div class="alert alert-primary">
+					<strong>PAGAR ESTE PEDIDO:</strong>
+					<div>						
+						<div class="form-group">
+							<label>Num. Cartão:</label>
+							<input type="text" class="form-control" name="cartao" id="cartao">					
+						</div>
+						<input type="hidden" name="pedido" id="pedido" value="${pedidosVM.pedido}" />
+						<input type="hidden" name="valor" id="totalPedido" value="${valorTotal}" />
+						
+						<button type="button" id="efetuarPagamento">Efetuar Pagamento</button>						
+					</div>
+					<div id="resposta"></div>
+				</div>
+						
 			</div>
 			<div class="col-6">
 				<h4>Itens do Pedido</h4>
@@ -49,36 +66,43 @@
 					</div>
 				</c:forEach>
 				<p class="text-right" >Total: ${valorTotal}</p>
-				
-				
-				
-<!-- 				<table class="table table-striped"> -->
-<!-- 					<thead> -->
-<!-- 						<tr> -->
-<!-- 							<th>DESCRIÇÃO</th> -->
-<!-- 							<th>QTDE</th> -->
-<!-- 							<th>VALOR</th> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-<!-- 					<tbody> -->
-<%-- 						<c:forEach var="i" items="${itensPedido}"> --%>
-<!-- 							<tr> -->
-<%-- 								<td>${i.nomeProduto}</td> --%>
-<%-- 								<td>${i.quantidade}</td>								 --%>
-<%-- 								<td>${i.valorTotal}</td> --%>
-<!-- 							</tr> -->
-<%-- 						</c:forEach> --%>
-<!-- 					</tbody> -->
-<!-- 					<tfoot align="right"> -->
-<!-- 						<tr> -->
-<!-- 							<td>TOTAL: </td> -->
-<!-- 							<td>R$ 100</td> -->
-<!-- 						</tr> -->
-<!-- 					</tfoot>					 -->
-<!-- 				</table> -->
 			</div>
 		</div>
 	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+	<script>
+		$(document).ready(function(){
+			$('#efetuarPagamento').click(function(){
+				$.ajax({
+					dataType: 'json',
+					contentType: 'application/json',
+					url: 'http://localhost:8080/Projeto07_ApiPagamentos/api/pagamentos',
+					method: 'POST',
+					data: JSON.stringify({
+						numeroPedido: $('#pedido').val(),
+						numeroCartao: $('#cartao').val(),
+						valor: $('#totalPedido').val(),
+						status: 1
+					}),
+				
+					success: function(resposta) {
+						$('#resposta').html('Pagamento efetuado com sucesso');
+					},
+					error: function(erro) {
+						alert('Erro: ' + erro.responseText);
+					}
+				});
+			});
+		});
+	
+	
+	</script>
+	
+	
+	
+	
+	
 </body>
 </html>
 
